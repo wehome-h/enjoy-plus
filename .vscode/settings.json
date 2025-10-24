@@ -1,5 +1,13 @@
 {
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "editor.formatOnSave": true
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "minapp-vscode.prettier": {
+    "useTabs": false,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "singleQuote": false
+  },
+  "[wxml]": {
+    "editor.defaultFormatter": "qiu8310.minapp-vscode"
+  },
+  "minapp-vscode.formatMaxLineCharacters": 80
 }
