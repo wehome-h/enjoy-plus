@@ -45,12 +45,17 @@
     "showES6CompileOption": false,
     "checkInvalidKey": true,
     "disableUseStrict": false,
-    "minifyWXML": true
+    "minifyWXML": true,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {},
-  "appid": "wx88efc5bd3db8d0ed",
+  "appid": "wxe0a1f22cfdf72a51",
   "libVersion": "2.26.0",
   "editorSetting": {
     "tabIndent": "insertSpaces",
