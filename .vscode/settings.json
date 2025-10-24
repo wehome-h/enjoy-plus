@@ -1,10 +1,11 @@
 {
   "minapp-vscode.wxmlFormatter": "prettier",
   "minapp-vscode.prettier": {
-    "useTabs": false,
-    "tabWidth": 2,
+    "singleQuote": true,
+    "semi": false,
     "printWidth": 80,
-    "singleQuote": false
+    "trailingComma": "none",
+    "endOfLine": "auto"
   },
   "[wxml]": {
     "editor.defaultFormatter": "qiu8310.minapp-vscode"
