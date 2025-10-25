@@ -21,7 +21,7 @@ Page({
     })
   },
 
-  onLoad() {
+  onShow() {
     this.getUserInfo()
   }
 })
