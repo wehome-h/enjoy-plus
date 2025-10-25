@@ -7,17 +7,31 @@ const http = createHttp({
 // 1. 设置全局默认请求地址
 http.baseURL = 'https://live-api.itheima.net'
 
-// 2. 设置响应拦截器
+// 2. 设置请求拦截器
+http.intercept.request = (config) => {
+  // 2.1 对请求配置做点什么
+  console.log('请求拦截器', config)
+  const app = getApp()
+  if (app.token) {
+    config.header = {
+      ...config.header,
+      Authorization: `Bearer ${app.token}`
+    }
+  }
+  return config
+}
+
+// 3. 设置响应拦截器
 http.intercept.response = (res) => {
-  // 2.1 对响应数据做点什么
+  // 3.1 对响应数据做点什么
   console.log('响应拦截器', res.data)
   if (res.data.code !== 10000) {
     wx.utils.toast(res.data.message || '请求数据失败')
     return Promise.reject(res.data)
   }
-  // 2.2 返回响应数据
+  // 3.2 返回响应数据
   return res.data
 }
 
-// 3. 导出
+// 4. 导出
 export default http
