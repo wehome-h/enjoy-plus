@@ -25,7 +25,12 @@ http.intercept.request = (config) => {
 http.intercept.response = (res) => {
   // 3.1 对响应数据做点什么
   console.log('响应拦截器', res.data)
-  if (res.data.code !== 10000) {
+  if (res.data.code === 401) {
+    const pageStack = getCurrentPages()
+    const { route } = pageStack.pop()
+    wx.redirectTo({ url: '/pages/login/index?redirectURL=/' + route })
+    return Promise.reject(res.data)
+  } else if (res.data.code !== 10000) {
     wx.utils.toast(res.data.message || '请求数据失败')
     return Promise.reject(res.data)
   }

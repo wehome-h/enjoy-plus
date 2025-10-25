@@ -96,10 +96,17 @@ Page({
       return wx.switchTab({
         url: '/pages/my/index'
       })
-
-    wx.redirectTo({
-      url: redirectURL
-    })
+    else if (
+      redirectURL === '/pages/my/index' ||
+      redirectURL === '/pages/my/index'
+    )
+      return wx.switchTab({
+        url: redirectURL
+      })
+    else
+      wx.redirectTo({
+        url: redirectURL
+      })
     console.log('跳转到', redirectURL)
   },
 
