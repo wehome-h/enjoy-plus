@@ -5,7 +5,9 @@
     <view class="label">通行证有效时间</view>
   </view>
   <view class="qrcode">
-    <image src="https://enjoy-plus.oss-cn-beijing.aliyuncs.com/uploads/qrcode.png"></image>
+    <image
+      src="https://enjoy-plus.oss-cn-beijing.aliyuncs.com/uploads/qrcode.png"
+    ></image>
     <view wx:if="{{false}}" class="mask">二维码失效</view>
   </view>
   <view class="description">
@@ -19,7 +21,7 @@
     <text class="enjoy-icon icon-share"></text>
     <text class="text">分享给朋友</text>
   </button>
-  <button class="button-save">
+  <button class="button-save" bind:tap="authSetting">
     <text class="enjoy-icon icon-save"></text>
     <text class="text">保存到本地</text>
   </button>
