@@ -10,7 +10,7 @@
       wx:key="id"
       title="{{ item.title }}"
       link-type="navigateTo"
-      url="/house_pkg/pages/building/index"
+      url="/house_pkg/pages/building/index?point={{ item.title }}"
       is-link
     />
   </van-cell-group>
