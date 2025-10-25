@@ -9,6 +9,21 @@ const utils = {
       icon: 'none',
       mask: true
     })
+  },
+
+  /**
+   * 格式化日期
+   * @param {*} timestamp 时间戳
+   * @returns 格式化后的日期字符串，格式：YYYY-MM-DD
+   */
+  formatDate(timestamp) {
+    const date = new Date(timestamp)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    return `${year}-${month < 10 ? '0' + month : month}-${
+      day < 10 ? '0' + day : day
+    }`
   }
 }
 
