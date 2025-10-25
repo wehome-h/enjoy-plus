@@ -7,6 +7,9 @@ page {
 .houses {
   padding-top: 30rpx;
   padding-bottom: calc(240rpx + env(safe-area-inset-bottom));
+  &.no-padding-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
   .houses-title {
     padding-left: 40rpx;

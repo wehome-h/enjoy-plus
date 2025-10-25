@@ -1,6 +1,12 @@
 Page({
   data: {
     dialogVisible: false,
+    list: []
+  },
+
+  async getList() {
+    const res = await wx.http.get('/room')
+    this.setData({ list: res.data })
   },
 
   swipeClose(ev) {
@@ -9,7 +15,7 @@ Page({
     if (position === 'right') {
       // 显示 Dialog 对话框
       this.setData({
-        dialogVisible: true,
+        dialogVisible: true
       })
 
       // swiper-cell 滑块关闭
@@ -19,13 +25,17 @@ Page({
 
   goDetail() {
     wx.navigateTo({
-      url: '/house_pkg/pages/detail/index',
+      url: '/house_pkg/pages/detail/index'
     })
   },
 
   addHouse() {
     wx.navigateTo({
-      url: '/house_pkg/pages/locate/index',
+      url: '/house_pkg/pages/locate/index'
     })
   },
+
+  onLoad() {
+    this.getList()
+  }
 })
