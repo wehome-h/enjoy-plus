@@ -1,9 +1,4 @@
-import QQMapWX from '../../../libs/qqmap-wx-jssdk.min.js'
-
-// 创建 qqmapsdk 实例
-const qqmapsdk = new QQMapWX({
-  key: 'BVEBZ-GJZLL-F7UPG-EI4IJ-JZFV2-ZVFKJ'
-})
+import qqmapsdk from '../../../utils/qqmapsdk'
 
 Page({
   /**
