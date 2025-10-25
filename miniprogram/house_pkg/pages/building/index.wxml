@@ -2,6 +2,7 @@
   <van-cell-group border="{{false}}">
     <van-cell
       wx:for="{{ size }}"
+      wx:key="*this"
       title="{{ point + (item + 1) + type }}"
       link-type="navigateTo"
       url="/house_pkg/pages/room/index?point={{ point }}&building={{ item + 1 }}{{ type }}"
