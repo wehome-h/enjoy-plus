@@ -11,10 +11,10 @@
       />
       <van-cell title-width="200rpx" title="性别">
         <van-radio-group direction="horizontal" model:value="{{ gender }}">
-          <van-radio icon-size="36rpx" checked-color="#5591AF" name="1">
+          <van-radio icon-size="36rpx" checked-color="#5591AF" name="{{ 1 }}">
             男
           </van-radio>
-          <van-radio icon-size="36rpx" checked-color="#5591AF" name="2">
+          <van-radio icon-size="36rpx" checked-color="#5591AF" name="{{ 0 }}">
             女
           </van-radio>
         </van-radio-group>

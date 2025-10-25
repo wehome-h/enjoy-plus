@@ -8,10 +8,15 @@
             wx:for="{{ list }}"
             wx:key="id"
             async-close
+            mark:id="{{ item.id }}"
             bind:close="swipeClose"
             right-width="{{ 70 }}"
           >
-            <van-cell-group bind:tap="goDetail" border="{{false}}">
+            <van-cell-group
+              bind:tap="goDetail"
+              mark:id="{{ item.id }}"
+              border="{{false}}"
+            >
               <van-cell size="large" title="{{ item.point }}">
                 <text wx:if="{{ item.status === 1 }}" class="tag info"
                   >审核中</text
@@ -65,5 +70,6 @@
     cancel-button-color="#848484"
     confirm-button-color="#5591af"
     bind:close="dialogClose"
+    bind:confirm="onDelete"
   />
 </auth>

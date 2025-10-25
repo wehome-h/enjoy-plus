@@ -1,7 +1,8 @@
 Page({
   data: {
     dialogVisible: false,
-    list: []
+    list: [],
+    id: null
   },
 
   async getList() {
@@ -9,13 +10,14 @@ Page({
     this.setData({ list: res.data })
   },
 
-  swipeClose(ev) {
+  async swipeClose(ev) {
     const { position, instance } = ev.detail
 
     if (position === 'right') {
       // 显示 Dialog 对话框
       this.setData({
-        dialogVisible: true
+        dialogVisible: true,
+        id: ev.mark.id
       })
 
       // swiper-cell 滑块关闭
@@ -23,9 +25,24 @@ Page({
     }
   },
 
-  goDetail() {
+  dialogClose() {
+    this.setData({
+      id: null
+    })
+  },
+
+  async onDelete() {
+    wx.showLoading({ title: '删除中...', mask: true })
+
+    await wx.http.delete('/room/' + this.data.id)
+    this.getList()
+
+    wx.utils.toast('删除成功')
+  },
+
+  goDetail(ev) {
     wx.navigateTo({
-      url: '/house_pkg/pages/detail/index'
+      url: '/house_pkg/pages/detail/index?id=' + ev.mark.id
     })
   },
 

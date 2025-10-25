@@ -13,7 +13,8 @@ Page({
     room: '',
     name: '',
     gender: null,
-    mobile: ''
+    mobile: '',
+    id: null
   },
 
   rules: {
@@ -63,27 +64,44 @@ Page({
     const isValid = this.validate()
     if (!isValid) return wx.utils.toast('请完善表单信息')
 
+    const params = {
+      point: this.data.point,
+      building: this.data.building,
+      room: this.data.room,
+      name: this.data.name,
+      gender: this.data.gender,
+      mobile: this.data.mobile,
+      idcardFrontUrl: this.data.idcardFrontUrl,
+      idcardBackUrl: this.data.idcardBackUrl
+    }
+
     wx.showLoading({ title: '提交中...', mask: true })
 
     await wx.http({
       method: 'POST',
       url: '/room',
-      data: {
-        point: this.data.point,
-        building: this.data.building,
-        room: this.data.room,
-        name: this.data.name,
-        gender: this.data.gender,
-        mobile: this.data.mobile,
-        idcardFrontUrl: this.data.idcardFrontUrl,
-        idcardBackUrl: this.data.idcardBackUrl
-      }
+      data: this.data.id ? { ...params, id: this.data.id } : params
     })
 
     wx.utils.toast('提交成功')
 
     wx.redirectTo({
-      url: '/house_pkg/pages/locate/index'
+      url: '/house_pkg/pages/list/index'
+    })
+  },
+
+  async getDetail(id) {
+    const res = await wx.http.get(`/room/${id}`)
+    this.setData({
+      id: res.data.id,
+      point: res.data.point,
+      building: res.data.building,
+      room: res.data.room,
+      name: res.data.name,
+      gender: res.data.gender,
+      mobile: res.data.mobile,
+      idcardFrontUrl: res.data.idcardFrontUrl,
+      idcardBackUrl: res.data.idcardBackUrl
     })
   },
 
@@ -94,6 +112,8 @@ Page({
         building: options.building,
         room: options.room
       })
+    } else if (options.id) {
+      this.getDetail(options.id)
     } else {
       wx.redirectTo({
         url: '/house_pkg/pages/locate/index'
