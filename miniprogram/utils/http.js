@@ -30,6 +30,21 @@ http.intercept.response = async (res) => {
     const { route } = pageStack.pop()
     wx.redirectTo({ url: '/pages/login/index?redirectURL=/' + route })
     return Promise.reject(res.data) */
+
+    if (res.config.url.includes('/refreshToken')) {
+      const app = getApp()
+      app.token = ''
+      app.refreshToken = ''
+      app.setToken('token', '')
+      app.setToken('refreshToken', '')
+
+      const pageStack = getCurrentPages()
+      const { route } = pageStack.pop()
+      wx.redirectTo({ url: '/pages/login/index?redirectURL=/' + route })
+
+      return Promise.reject(res.data)
+    }
+
     const app = getApp()
     app.token = ''
     app.setToken('token', '')
